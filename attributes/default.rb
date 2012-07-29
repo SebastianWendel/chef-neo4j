@@ -18,20 +18,21 @@
 # limitations under the License.
 #
 
-default['neo4j']['project_url'] = "https://github.com/downloads/neo4j"
-default['neo4j']['server_version'] = "0.9.6p1"
-default['neo4j']['server_file'] = "neo4j-server-#{node['neo4j']['server_version']}.tar.gz"
-default['neo4j']['server_download'] = "#{node['neo4j']['project_url']}/neo4j-server/#{node['neo4j']['server_file']}"
-default['neo4j']['server_checksum'] = "8bdddfc2ba9b8537f705f997461bd40d3a4091cd3f2b824622704a62ef1c0b96"
+#http://dist.neo4j.org/neo4j-community-1.8.M06-unix.tar.gz
 
-default['neo4j']['server_path'] = "/usr/share/neo4j-server"
+default['neo4j']['project_url'] = "http://dist.neo4j.org"
+default['neo4j']['server_version'] = "1.8.M06"
+default['neo4j']['server_file'] = "neo4j-community-#{node['neo4j']['server_version']}-unix.tar.gz"
+default['neo4j']['server_download'] = "#{node['neo4j']['project_url']}/#{node['neo4j']['server_file']}"
+
+default['neo4j']['server_path'] = "/usr/share/neo4j"
 default['neo4j']['server_bin'] = "#{node['neo4j']['server_path']}/bin"
-default['neo4j']['server_wrapper'] = "#{node['neo4j']['server_path']}/wrapper"
-default['neo4j']['server_syslog4j'] = "#{node['neo4j']['server_path']}/syslog4j"
-default['neo4j']['server_etc'] = "/etc/neo4j-server"
-default['neo4j']['server_pid'] = "/var/run/neo4j-server"
-default['neo4j']['server_lock'] = "/var/lock/neo4j-server"
-default['neo4j']['server_logs'] = "/var/log/neo4j-server"
+default['neo4j']['server_etc'] = "/etc/neo4j"
+default['neo4j']['server_data'] = "/var/lib/neo4j"
+default['neo4j']['server_ssl'] = "#{node['neo4j']['server_data']}/ssl"
+default['neo4j']['server_pid'] = "/var/run/neo4j"
+default['neo4j']['server_lock'] = "/var/lock/neo4j"
+default['neo4j']['server_logs'] = "/var/log/neo4j"
 default['neo4j']['server_user'] = "neo4j"
 default['neo4j']['server_group'] = "neo4j"
 default['neo4j']['server_port'] = 5140
