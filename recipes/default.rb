@@ -22,19 +22,17 @@ when "debian", "ubuntu"
   include_recipe 'apt'
 when "centos","redhat"
   include_recipe 'yum'
+  package "lsof"
 end
 
 include_recipe "java"
 
-group node['neo4j']['server_group'] do
-    #system true
-end
+group node['neo4j']['server_group']
 
 user node['neo4j']['server_user'] do
     home node['neo4j']['server_path']
     comment "service user for neo4j-server"
     gid node['neo4j']['server_group']
-    #system true
 end
 
 root_dirs = [
@@ -139,6 +137,16 @@ template "#{node['neo4j']['server_etc']}/neo4j-wrapper.conf" do
   owner "root"
   group "root"
   mode 0444
+end
+
+execute "setting the systems ulimits" do 
+  # http://wiki.basho.com/Open-Files-Limit.html
+  user "root"
+  group "root"
+  command <<-EOF
+    echo "ulimit -n #{node['neo4j']['server_ulimit']}" > /etc/default/neo4j
+  EOF
+  action :run
 end
 
 service "neo4j-service" do

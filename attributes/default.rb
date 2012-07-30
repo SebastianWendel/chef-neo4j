@@ -35,6 +35,7 @@ default['neo4j']['server_lock'] = "/var/lock/neo4j"
 default['neo4j']['server_logs'] = "/var/log/neo4j"
 default['neo4j']['server_user'] = "neo4j"
 default['neo4j']['server_group'] = "neo4j"
+default['neo4j']['server_ulimit'] = 40960
 default['neo4j']['server_port'] = 5140
 
 default['neo4j']['email_type'] = "smtp"

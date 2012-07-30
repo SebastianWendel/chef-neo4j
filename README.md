@@ -34,7 +34,7 @@ To install the coockbook use the following commands, depending to your platform:
 
     librarian-chef install
 
-    knife cookbook upload apt yum java elasticsearch mongodb rvm apache2 neo4j
+    knife cookbook upload apt yum java neo4j
 
 # Recipes #
 The cookbock provides the following recipes:
